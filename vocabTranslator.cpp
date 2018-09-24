@@ -29,11 +29,12 @@
         ofstream GermanOut("german.txt");
         ofstream EnglishOut("english.txt");
         cout << "Closing the file by outputting the files..." << endl;
-        for(int i = 0; i < this->englishWords.size(); i++)
+        for(int i = 0; i < this->Words.size(); i++)
         {
-            EnglishOut << this->englishWords.at(i);
+            WORDS w = Words.at(i);
+            EnglishOut << w.EnglishWord;
             EnglishOut << endl;
-            GermanOut << this->germanWords.at(i);
+            GermanOut << w.GermanWord;
             GermanOut << endl;
         }
         cout << "Done." << endl;
@@ -48,81 +49,77 @@
         //Read the german file first.
         int englishCount = 0;
         int germanCount = 0;
-        if(!germanFile.is_open()) //if the german file does not exist
-        {
-            cout << "German.txt: DOES NOT EXIST!" << endl;
-        }
-        else //if the german file exists
+        if(englishFile.is_open() && germanFile.is_open()) //if both files exist
         {
             //then read it
-            cout << "Reading German.txt..." << endl;
-            char input[100];
-            while(germanFile>>input)
+            cout << "Reading German.txt & English.txt..." << endl;
+            char germanInput[100];
+            char englishInput[100];
+            while(germanFile>>germanInput)
             {
-                string word = input;
-                this->germanWords.push_back(word); //Fill the german array.
+                englishFile >> englishInput;
+                string gword = germanInput;
+                string eword = englishInput;
+                WORDS w;
+                w.GermanWord = gword;
+                w.EnglishWord = eword;
+                this->Words.push_back(w); //Fill the Words array.
                 germanCount++;
             }
-            cout << "Done reading German.txt" << endl;
+            cout << "Done reading German.txt & English.txt." << endl;
+        }
+        else if(!germanFile.is_open() || !englishFile.is_open())
+        {
+            cout << "SOMETHING IS MISSING!!!" << endl;
         }
         germanFile.close();
-        //Read the english file next.
-        if(!englishFile.is_open()) //if the german file does not exist
-        {
-            cout << "English.txt: DOES NOT EXIST!" << endl;
-        }
-        else //if the german file exists
-        {
-            //then read it
-            cout << "Reading English.txt..." << endl;
-            char input[100];
-            while(englishFile>>input)
-            {
-                string word = input;
-                this->englishWords.push_back(word); //Fill the german array.
-                englishCount++;
-            }
-            cout << "Done reading English.txt" << endl;
-        }
         englishFile.close();
     }
     
     void VocabTranslator::addWord(string englishWordToAdd, string germanWordToAdd)
     {
-        this->englishWords.push_back(englishWordToAdd);
-        this->germanWords.push_back(germanWordToAdd);
+        WORDS w;
+        w.GermanWord = germanWordToAdd;
+        w.EnglishWord = englishWordToAdd;
+        this->Words.push_back(w);
     }
 
     void VocabTranslator::printAll()
     {
-        for(int i = 0; i < germanWords.size(); i++)
+        for(int i = 0; i < Words.size(); i++)
         {
-            cout << germanWords.at(i);
+            WORDS w;
+            w = Words.at(i);
+            cout << w.EnglishWord;
             cout << " - " << endl;
-            cout << englishWords.at(i) << endl;
+            cout << w.GermanWord << endl;
         }
     }
 
     //void addWord(string, list);
     string VocabTranslator::translateToEnglish(string germanWordToTranslate)
     {
-        for(int i = 0; i < this->germanWords.size(); i++)
+        for(int i = 0; i < this->Words.size(); i++)
         {
-            if(germanWordToTranslate == this->germanWords.at(i))
+            WORDS w;
+            w = Words.at(i);
+            if(germanWordToTranslate == w.GermanWord)
             {
-                return this->englishWords.at(i);
+                return w.EnglishWord;
             }
         }
-        return "INVALID";
+        return "That word is not in this dictionary!";
     }
     string VocabTranslator::translateToGerman(string englishWordToTranslate)
     {
-        for(int i = 0; i < this->englishWords.size(); i++)
+        for(int i = 0; i < this->Words.size(); i++)
         {
-            if(englishWordToTranslate == this->englishWords.at(i))
+            WORDS w;
+            w = Words.at(i);
+            if(englishWordToTranslate == w.EnglishWord)
             {
-                return this->germanWords.at(i);
+                return w.GermanWord;
             }
         }
-        return "INVALID";
+        return "That word is not in this dictionary!";
     }

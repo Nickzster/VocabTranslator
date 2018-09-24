@@ -8,14 +8,16 @@ using std::vector;
 
 #ifndef VOCAB
 #define VOCAB
-const int SIZE = 100000;
 
+struct WORDS
+{
+    string EnglishWord;
+    string GermanWord;
+};
 class VocabTranslator
 {
     private:
-        int maxSize;
-        vector <string> englishWords;
-        vector <string> germanWords;
+        vector <WORDS> Words;
         //vector <string list> germanVerbs;
     public:
 
