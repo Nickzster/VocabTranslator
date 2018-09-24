@@ -1,0 +1,62 @@
+Script started on Mon 24 Sep 2018 12:16:43 AM DST
+]0;Nick@Nick-PC: /mnt/c/users/nick/documents/projects/VocabTranslator[01;32mNick@Nick-PC[00m:[01;34m/mnt/c/users/nick/documents/projects/VocabTranslator[00m$ fork(ls)) l[1P./a.outg++ fork.cpp[5P./a.out
+INITALIZING======================
+calling constructor
+Reading German.txt...
+Done reading German.txt
+Reading English.txt...
+Done reading English.txt
+=================================
+
+Welcome to the German & English Translator by Nick Zimmermann.
+Please start by making a selection below.
+==============================================================
+1. Add Words to this Dictionary.
+2. Translate: English -> German
+3. Translate: German -> English
+Q. Quit
+Please make your selection by typing the corresponding number: 
+==> 2
+===> To return to the menu, type in Q at any time.
+Enter an english word to translate: love
+liebe
+Enter an english word to translate: none
+keine
+Enter an english word to translate: alarm-clock
+wecker
+Enter an english word to translate: q
+1. Add Words to this Dictionary.
+2. Translate: English -> German
+3. Translate: German -> English
+Q. Quit
+Please make your selection by typing the corresponding number: 
+==> 3
+===> To return to the menu, type in Q at any time.
+Enter a german word to translate: liebe
+love
+Enter a german word to translate: wecker
+alarm-clock
+Enter a german word to translate: uhr
+clock
+Enter a german word to translate: test
+INVALID
+Enter a german word to translate: q
+1. Add Words to this Dictionary.
+2. Translate: English -> German
+3. Translate: German -> English
+Q. Quit
+Please make your selection by typing the corresponding number: 
+==> q
+
+Thanks for using this program!
+
+
+INITALIZING======================
+calling destructor
+Closing the file by outputting the files...
+Done.
+=================================
+]0;Nick@Nick-PC: /mnt/c/users/nick/documents/projects/VocabTranslator[01;32mNick@Nick-PC[00m:[01;34m/mnt/c/users/nick/documents/projects/VocabTranslator[00m$ script[K[K[K[K[K[Kexit
+exit
+
+Script done on Mon 24 Sep 2018 12:17:28 AM DST
