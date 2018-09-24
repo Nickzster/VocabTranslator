@@ -91,13 +91,13 @@ void TransToGerman(VocabTranslator &v)
     cout << "===> To return to the menu, type in Q at any time." << endl;
     while (Translate)
     {
-        cout << "Enter an english word to translate: ";
+        cout << "Vocab Word: ";
         cin >> EnglishWord;
         if(EnglishWord.at(0) == 'q')
         {
             return;
         }
-        cout << v.translateToGerman(EnglishWord) << endl;
+        cout << EnglishWord << " auf deutsch ist " << v.translateToGerman(EnglishWord) << endl;
     }
 }
 void TransToEnglish(VocabTranslator &v)
@@ -107,12 +107,12 @@ void TransToEnglish(VocabTranslator &v)
     cout << "===> To return to the menu, type in Q at any time." << endl;
     while (Translate)
     {
-        cout << "Enter a german word to translate: ";
+        cout << "Wortschatz: ";
         cin >> GermanWord;
         if(GermanWord.at(0) == 'q')
         {
             return;
         }
-        cout << v.translateToEnglish(GermanWord) << endl;
+        cout << GermanWord << " in english is " << v.translateToEnglish(GermanWord) << endl;
     }
 }
