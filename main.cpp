@@ -70,7 +70,7 @@ void AddWords(VocabTranslator &v)
 
         cout << "Enter an English word: ";
         cin >> EnglishWord;
-        if(EnglishWord.at(0) == 'q')
+        if(EnglishWord.at(0) == 'q' && EnglishWord.size() == 1)
         {
             return;
         }
