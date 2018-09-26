@@ -101,13 +101,13 @@
             while(englishVerbFile>>englishInput)
             {
                 string everb = englishInput;
-                cout << "reading " << everb << endl;
+                //cout << "reading " << everb << endl;
                 vector <string> gvverb;
                 for(int i = 0; i < 7; i++) //since the conjugations have 7 different verbs.
                 {
                     germanVerbFile >> germanInput;
                     string gverb = germanInput;
-                    cout << "reading " << gverb << endl;
+                    //cout << "reading " << gverb << endl;
                     gvverb.push_back(gverb);
                 }
                 VERBS v;
@@ -224,10 +224,12 @@
         if(w.EnglishWord == wordToTranslate) //If the word is an english word
         {
             cout << wordToTranslate << " auf deutsch ist " << w.GermanWord << endl; //Translate it to its german counterpart, and display it.
+            return;
         }
         else if(w.GermanWord == wordToTranslate) //If the word is a german word
         {
             cout << wordToTranslate << " in english is " << w.EnglishWord << endl; //Translate it to its english counterpart, and display it.
+            return;
         }
         else
         {
@@ -238,6 +240,7 @@
         if(v.EnglishVerb == wordToTranslate || v.GermanConjugations.size() > 1) //Regardless if we find it, we will display the entire conjugations table.
         {
             displayConjugations(v);
+            return;
         }
         else
         {
