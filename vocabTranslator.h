@@ -27,8 +27,9 @@ class VocabTranslator
         vector <VERBS> Verbs;
         //vector <string list> germanVerbs;
 
-        WORDS searchForAWord(string);
-        VERBS searchForAVerb(string);
+        int searchForAWord(string);
+        int searchForAVerb(string);
+        int searchForASpecificConjugation(string, vector <string> &GermanConjugations);
         void displayConjugations(VERBS);
     public:
 
@@ -41,7 +42,7 @@ class VocabTranslator
     //void addWord(string, list);
     void printAll();
     void translate(string);
-    void correction();
+    void correction(string,string);
 };
 
 #endif

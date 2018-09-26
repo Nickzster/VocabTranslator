@@ -208,3 +208,5 @@ september
 october
 november
 december
+born
+vocabulary

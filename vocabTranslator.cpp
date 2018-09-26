@@ -152,7 +152,7 @@
     }
 
 
-    WORDS VocabTranslator::searchForAWord(string word)
+    int VocabTranslator::searchForAWord(string word)
     {
         for(int i = 0; i < this->Words.size(); i++)
         {
@@ -160,16 +160,13 @@
             w = Words.at(i);
             if(word == w.GermanWord || word == w.EnglishWord)
             {
-                return w;
+                return i;
             }
         }
-        WORDS w;
-        w.EnglishWord = "-1";
-        w.GermanWord = "-1";
-        return w;
+        return -1;
     }
 
-    VERBS VocabTranslator::searchForAVerb(string verb)
+    int VocabTranslator::searchForAVerb(string verb)
     {
         for(int i = 0; i < this->Verbs.size(); i++) //Search the verbs vector for what we are looking for.
         {
@@ -177,26 +174,31 @@
             v = Verbs.at(i);
             if(verb == v.EnglishVerb) //If the english verb matches, 
             {
-                return v; //Then we have what we are looking for.
+                return i; //Then we have what we are looking for.
             }
             else //If it does not, we need to check all of the german conjugations.
             {
                 vector <string> gc = v.GermanConjugations;
-                for(int i = 0; i < gc.size(); i++) //If one of the german conjugations matches,
+                int conjIndex = searchForASpecificConjugation(verb, gc);
+                if(conjIndex != -1 && conjIndex >= 0) //we found it!
                 {
-                    if(gc.at(i) == verb)
-                    {
-                        return v; //Then we have what we are looking for.
-                    }
+                    return i;
                 }
             }
         } //If the loop breaks, then it is not in the verb dictionary.
-        VERBS v;
-        v.EnglishVerb = "-1";
-        vector <string> gc;
-        gc.push_back("-1");
-        v.GermanConjugations = gc;
-        return v; //so return an empty verbs list.
+        return -1; //so return an empty verbs list.
+    }
+
+    int VocabTranslator::searchForASpecificConjugation(string verb, vector <string> &GermanConjugations)
+    {
+        for(int i = 0; i < GermanConjugations.size(); i++)
+        {
+            if(GermanConjugations.at(i) == verb)
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
     void VocabTranslator::displayConjugations(VERBS v)
@@ -220,13 +222,20 @@
     void VocabTranslator::translate(string wordToTranslate)
     {
         //First, we search for a vocab word.
-        WORDS w = searchForAWord(wordToTranslate);
-        if(w.EnglishWord == wordToTranslate) //If the word is an english word
+        int index = searchForAWord(wordToTranslate);
+        WORDS w;
+        bool validReturn = false;
+        if(!(index == -1))
+        {
+            w = this->Words.at(index);
+            validReturn = true;
+        }
+        if(validReturn && w.EnglishWord == wordToTranslate) //If the word is an english word
         {
             cout << wordToTranslate << " auf deutsch ist " << w.GermanWord << endl; //Translate it to its german counterpart, and display it.
             return;
         }
-        else if(w.GermanWord == wordToTranslate) //If the word is a german word
+        else if(validReturn && w.GermanWord == wordToTranslate) //If the word is a german word
         {
             cout << wordToTranslate << " in english is " << w.EnglishWord << endl; //Translate it to its english counterpart, and display it.
             return;
@@ -236,8 +245,16 @@
             //cout << wordToTranslate << " isn't in the dictionary... let's check the conjugations..." << endl;
         }
         //If we can't find the vocab word, then we need to search the conjugations.
-        VERBS v = searchForAVerb(wordToTranslate);
-        if(v.EnglishVerb == wordToTranslate || v.GermanConjugations.size() > 1) //Regardless if we find it, we will display the entire conjugations table.
+        validReturn = false;
+        index = searchForAVerb(wordToTranslate);
+        VERBS v;
+        if(!(index == -1))
+        {
+            v = this->Verbs.at(index);
+            validReturn = true;
+            cout << "***valid return is true ***" << endl;
+        }
+        if(validReturn && v.EnglishVerb == wordToTranslate || v.GermanConjugations.size() > 1) //Regardless if we find it, we will display the entire conjugations table.
         {
             displayConjugations(v);
             return;
@@ -249,9 +266,40 @@
 
     }
 
-    void VocabTranslator::correction()
+    void VocabTranslator::correction(string wordThatIsCorrect, string wordToBeFixed)
     {
-        string input;
-        cout << "Please enter the word that needs to be corrected: ";
-        cin >> input;
+        int index = searchForAWord(wordToBeFixed); //First, we find the incorrect word in the dictionary.
+        if(!(index == -1)) //If we find the word, replace it.
+        {
+            WORDS w = this->Words.at(index);
+            if(w.EnglishWord == wordToBeFixed)
+            {
+                w.EnglishWord = wordThatIsCorrect;
+                //cout << "**A English word!" << endl;
+            }
+            else if(w.GermanWord == wordToBeFixed)
+            {
+                w.GermanWord = wordThatIsCorrect;
+                //cout << "**A German word!" << endl;
+            }
+            this->Words.at(index) = w; //then update it.
+            cout << "A word was fixed in the dictionary!" << endl;
+        }
+        //If we don't find the word, then we need to check the verbs.
+        index = searchForAVerb(wordToBeFixed);
+        if(!(index == -1)) //If we find the word, we need to replace it.
+        {
+            VERBS v = this->Verbs.at(index);
+            if(v.EnglishVerb == wordToBeFixed) //IF the english part needs to be fixed.
+            {
+                v.EnglishVerb = wordThatIsCorrect;
+            }
+            else if(searchForASpecificConjugation(wordToBeFixed, v.GermanConjugations) != -1) //If we find it in the conjugations
+            {   
+                v.GermanConjugations.at(searchForASpecificConjugation(wordToBeFixed, v.GermanConjugations)) = wordThatIsCorrect; 
+            }
+            this->Verbs.at(index) = v; //then update it.
+            cout << "A word was fixed in the VERB dictionary!" << endl;
+        }
+
     }

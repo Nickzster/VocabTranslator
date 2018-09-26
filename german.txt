@@ -208,3 +208,5 @@ september
 oktober
 november
 dezember
+geboren
+wortschatz
