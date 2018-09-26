@@ -1,0 +1,50 @@
+Script started on Tue 25 Sep 2018 08:25:50 PM DST
+]0;Nick@Nick-PC: /mnt/c/users/nick/documents/projects/VocabTranslator[01;32mNick@Nick-PC[00m:[01;34m/mnt/c/users/nick/documents/projects/VocabTranslator[00m$ ./a.out
+INITALIZING======================
+calling constructor
+Reading German.txt & English.txt...
+Done reading German.txt & English.txt.
+=================================
+
+Welcome to the German & English Translator by Nick Zimmermann.
+Please start by making a selection below.
+==============================================================
+
+1. Add Words to this Dictionary.
+2. Translate a word
+Q. Quit
+Please make your selection by typing the corresponding number: 
+==> 2
+===> To return to the menu, type in Q at any time.
+Enter a word to translate: need
+need auf deutsch ist brauchen
+Enter a word to translate: keine
+keine in english is none
+Enter a word to translate: liebe
+liebe in english is love
+Enter a word to translate: car
+car auf deutsch ist auto
+Enter a word to translate: h herr
+herr in english is sir
+Enter a word to translate: q
+
+
+1. Add Words to this Dictionary.
+2. Translate a word
+Q. Quit
+Please make your selection by typing the corresponding number: 
+==> exit    q
+
+
+Thanks for using this program!
+
+
+INITALIZING======================
+calling destructor
+Closing the file by outputting the files...
+Done.
+=================================
+]0;Nick@Nick-PC: /mnt/c/users/nick/documents/projects/VocabTranslator[01;32mNick@Nick-PC[00m:[01;34m/mnt/c/users/nick/documents/projects/VocabTranslator[00m$ exit
+exit
+
+Script done on Tue 25 Sep 2018 08:26:29 PM DST

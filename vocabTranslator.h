@@ -14,11 +14,22 @@ struct WORDS
     string EnglishWord;
     string GermanWord;
 };
+
+struct VERBS
+{
+    string EnglishVerb;
+    vector <string> GermanConjugations;
+};
 class VocabTranslator
 {
     private:
         vector <WORDS> Words;
+        vector <VERBS> Verbs;
         //vector <string list> germanVerbs;
+
+        WORDS searchForAWord(string);
+        VERBS searchForAVerb(string);
+        void displayConjugations(VERBS);
     public:
 
     VocabTranslator();
@@ -26,10 +37,11 @@ class VocabTranslator
     void write();
     void read();
     void addWord(string, string);
+    void addConjugation(string, vector <string> &GermanConjugations);
     //void addWord(string, list);
     void printAll();
-    string translateToEnglish(string);
-    string translateToGerman(string);
+    void translate(string);
+    void correction();
 };
 
 #endif

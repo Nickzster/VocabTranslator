@@ -9,9 +9,8 @@
 using namespace std;
 
 void AddWords(VocabTranslator &v);
-void TransToGerman(VocabTranslator &v);
-void TransToEnglish(VocabTranslator &v);
-
+void AddConj(VocabTranslator &v);
+void Translate(VocabTranslator &v);
 
 int main()
 {
@@ -24,9 +23,9 @@ int main()
     while(MainMenu)
     {
         cout << endl;
-        cout << "1. Add Words to this Dictionary." << endl;
-        cout << "2. Translate: English -> German" << endl;
-        cout << "3. Translate: German -> English" << endl;
+        cout << "1. Add vocabulary (wortschatz) to this Dictionary." << endl;
+        cout << "2. Add a verb to this Dictionary." << endl;
+        cout << "3. Translate a word" << endl;
         cout << "Q. Quit" << endl;
         cout << "Please make your selection by typing the corresponding number: " << endl;
         cout << "==> ";
@@ -37,10 +36,10 @@ int main()
                 AddWords(v);
                 break;
             case '2':
-                TransToGerman(v);
+                AddConj(v);
                 break;
             case '3':
-                TransToEnglish(v);
+                Translate(v);
                 break;
             case 'Q':
                 MainMenu = false;
@@ -84,35 +83,96 @@ void AddWords(VocabTranslator &v)
         v.addWord(EnglishWord, GermanWord);
     }
 }
-void TransToGerman(VocabTranslator &v)
+
+void AddConj(VocabTranslator &v)
 {
-    bool Translate = true;
-    string EnglishWord;
+    bool conj = true;
     cout << "===> To return to the menu, type in Q at any time." << endl;
-    while (Translate)
+    while(conj)
     {
-        cout << "Vocab Word: ";
-        cin >> EnglishWord;
-        if(EnglishWord.at(0) == 'q')
+        string EnglishVerb;
+        string GermanInput;
+        vector <string> GermanConjugations;
+        cout << "Enter an english verb: ";
+        cin >> EnglishVerb;
+        if(EnglishVerb.at(0) == 'q')
         {
             return;
         }
-        cout << EnglishWord << " auf deutsch ist " << v.translateToGerman(EnglishWord) << endl;
+        cout << "Enter the German Verb Equivalent: ";
+        cin >> GermanInput;
+        if(GermanInput.at(0) == 'q')
+        {
+            return;
+        }
+        GermanConjugations.push_back(GermanInput);
+        GermanInput = "";
+        cout << "Enter the Conjugation for Ich: ";
+        cin >> GermanInput;
+        if(GermanInput.at(0) == 'q')
+        {
+            return;
+        }
+        GermanConjugations.push_back(GermanInput);
+        GermanInput = "";
+        cout << "Enter the Conjugation for Du: ";
+        cin >> GermanInput;
+        if(GermanInput.at(0) == 'q')
+        {
+            return;
+        }
+        GermanConjugations.push_back(GermanInput);
+        GermanInput = "";
+        cout << "Enter the Conjugation for er,sie,es: ";
+        cin >> GermanInput;
+        if(GermanInput.at(0) == 'q')
+        {
+            return;
+        }
+        GermanConjugations.push_back(GermanInput);
+        GermanInput = "";
+        cout << "Enter the Conjugation for Wir: ";
+        cin >> GermanInput;
+        if(GermanInput.at(0) == 'q')
+        {
+            return;
+        }
+        GermanConjugations.push_back(GermanInput);
+        GermanInput = "";
+        cout << "Enter the Conjugation for Ihr: ";
+        cin >> GermanInput;
+        if(GermanInput.at(0) == 'q')
+        {
+            return;
+        }
+        GermanConjugations.push_back(GermanInput);
+        GermanInput = "";
+        cout << "Enter the Conjugation for Sie: ";
+        cin >> GermanInput;
+        if(GermanInput.at(0) == 'q')
+        {
+            return;
+        }
+        GermanConjugations.push_back(GermanInput);
+        GermanInput = "";
+        v.addConjugation(EnglishVerb, GermanConjugations);
     }
 }
-void TransToEnglish(VocabTranslator &v)
+
+
+void Translate(VocabTranslator &v)
 {
-    bool Translate = true;
-    string GermanWord;
+    bool trans = true;
+    string WordToTranslate;
     cout << "===> To return to the menu, type in Q at any time." << endl;
-    while (Translate)
+    while (trans)
     {
-        cout << "Wortschatz: ";
-        cin >> GermanWord;
-        if(GermanWord.at(0) == 'q')
+        cout << "Enter a word to translate: ";
+        cin >> WordToTranslate;
+        if(WordToTranslate.at(0) == 'q')
         {
             return;
         }
-        cout << GermanWord << " in english is " << v.translateToEnglish(GermanWord) << endl;
+        v.translate(WordToTranslate);
     }
 }
