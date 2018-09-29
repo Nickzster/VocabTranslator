@@ -1,3 +1,6 @@
 to-be
 need
 swim
+play
+eat
+study
