@@ -6,8 +6,8 @@
 using std::string;
 using std::vector;
 
-#ifndef VOCAB
-#define VOCAB
+#ifndef TRANSLATOR
+#define TRANSLATOR
 
 const int SIZE = 58211;
 
