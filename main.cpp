@@ -4,7 +4,7 @@
 
 #include <list>
 
-#include "vocabTranslator.h"
+#include "TRANSLATOR.h"
 
 using namespace std;
 

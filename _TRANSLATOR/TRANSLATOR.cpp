@@ -4,7 +4,7 @@
     #include <fstream>
     #include <ostream>
     #include <istream>
-    #include "vocabTranslator.h"
+    #include "TRANSLATOR.h"
     using namespace std;
 
     VocabTranslator::VocabTranslator()
@@ -26,10 +26,10 @@
 
     void VocabTranslator::write()
     {
-        ofstream GermanOut("german.txt");
-        ofstream EnglishOut("english.txt");
-        ofstream GermanVerbsOut("german-verbs.txt");
-        ofstream EnglishVerbsOut("english-verbs.txt");
+        ofstream GermanOut("../_IOFILES/german.txt");
+        ofstream EnglishOut("../_IOFILES/english.txt");
+        ofstream GermanVerbsOut("../_IOFILES/german-verbs.txt");
+        ofstream EnglishVerbsOut("../_IOFILES/english-verbs.txt");
         cout << "Closing the file by outputting the files..." << endl;
         for(int i = 0; i < this->Words.size(); i++)
         {
@@ -61,10 +61,10 @@
 
     void VocabTranslator::read()
     {
-        ifstream germanFile("german.txt"); //german file to read
-        ifstream englishFile("english.txt"); //english file to read
-        ifstream englishVerbFile("english-verbs.txt");
-        ifstream germanVerbFile("german-verbs.txt");
+        ifstream germanFile("../_IOFILES/german.txt"); //german file to read
+        ifstream englishFile("../_IOFILES/english.txt"); //english file to read
+        ifstream englishVerbFile("../_IOFILES/english-verbs.txt");
+        ifstream germanVerbFile("../_IOFILES/german-verbs.txt");
         //Read the german file first.
         int englishCount = 0;
         int germanCount = 0;
