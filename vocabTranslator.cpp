@@ -163,7 +163,7 @@
                 return i;
             }
         }
-        return -1;
+        return -1; 
     }
 
     int VocabTranslator::searchForAVerb(string verb)
@@ -199,6 +199,11 @@
             }
         }
         return -1;
+    }
+
+    int VocabHash(string) //To generate indicies
+    {
+        
     }
 
     void VocabTranslator::displayConjugations(VERBS v)
