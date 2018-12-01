@@ -1,0 +1,4 @@
+*.out
+_DICTIONARY/*.out
+_TRANSLATOR/*.out
+WORKING/*.out
