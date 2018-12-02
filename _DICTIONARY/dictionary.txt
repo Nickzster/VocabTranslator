@@ -47,8 +47,8 @@ $word
 
 $word
 
-$WORD
-$EOD 
+$word
+$eod
 
 
 
