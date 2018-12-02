@@ -1,50 +1,53 @@
-$EWORD
-to-be
-$INDEXTRANSLATION
-sein
-$EC 
-@PRESENT
-am  
-are 
-is
-are 
-are 
-are 
-@PAST
-was
-were    
-was
-were
-were
-were
-$EOEC
-$ENDOFEWORD
-$GWORD
-sein
-$INDEXTRANSLATION
-to-be
-$GC
-@PRESENT
-bin
-bist
-ist 
-sind
-seid
-sind
-@PAST 
-war
-warst
-war
-waren
-wart 
-waren
-$EOGC
-$ENDOFGWORD
-$TYPE
-VERB
-$CASE
-NOMINATIVE
-$EOWORD 
+$word
+    $eword
+        to-be
+    $eword
+    $gword
+        sein
+    $gword
+    $type
+        VERB
+    $type
+    $case
+        NOMINATIVE
+    $case
+    $englishconjugation
+    @present
+        am  
+        are 
+        is
+        are 
+        are 
+        are 
+    @past
+        was
+        were    
+        was
+        were
+        were
+        were
+    $englishconjugation
+    $germanconjugation
+    @PRESENT
+        bin
+        bist
+        ist 
+        sind
+        seid
+        sind
+    @PAST 
+        war
+        warst
+        war
+        waren
+        wart 
+        waren
+    $germanconjugation
+$word
+
+$word
+
+$WORD
 $EOD 
 
 

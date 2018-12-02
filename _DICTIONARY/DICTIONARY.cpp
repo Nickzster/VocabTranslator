@@ -26,19 +26,6 @@ string Dictionary::lookUp(string word)
         return "";
     }
 }
-void Dictionary::addToDictionary(WORDS englishWord, WORDS germanWord)
-{
-    this->englishWords.insert(pair<string, WORDS>(englishWord.word, englishWord));
-    this->germanWords.insert(pair<string, WORDS>(germanWord.word, germanWord));
-}
-bool Dictionary::removeFromDictionary(string)
-{
-
-}
-bool Dictionary::fixAWord(WORDS, WORDS)
-{
-
-}
 void Dictionary::read()
 {
     ifstream dictionaryFile("../_IOFILES/dictionary.txt");
@@ -249,60 +236,3 @@ Dictionary::~Dictionary()
 {
     write();
 }
-
-
-        // int englishCount = 0;
-        // int germanCount = 0;
-        // if(englishFile.is_open() && germanFile.is_open()) //if both files exist
-        // {
-        //     //then read it
-        //     cout << "Reading German.txt & English.txt..." << endl;
-        //     char germanInput[100];
-        //     char englishInput[100];
-        //     while(germanFile>>germanInput)
-        //     {
-        //         englishFile >> englishInput;
-        //         string gword = germanInput;
-        //         string eword = englishInput;
-        //         WORDS w;
-        //         w.GermanWord = gword;
-        //         w.EnglishWord = eword;
-        //         this->Words.push_back(w); //Fill the Words array.
-        //         germanCount++;
-        //     }
-        //     cout << "Done reading German.txt & English.txt." << endl;
-        // }
-        // else if(!germanFile.is_open() || !englishFile.is_open())
-        // {
-        //     cout << "SOMETHING IS MISSING!!!" << endl;
-        // }
-        // germanFile.close();
-        // englishFile.close();
-        // if(englishVerbFile.is_open() && germanVerbFile.is_open())
-        // {
-        //     cout << "Reading german-verbs.txt & english-verbs.txt..." << endl;
-        //     char germanInput[100];
-        //     char englishInput[100];
-        //     while(englishVerbFile>>englishInput)
-        //     {
-        //         string everb = englishInput;
-        //         //cout << "reading " << everb << endl;
-        //         vector <string> gvverb;
-        //         for(int i = 0; i < 7; i++) //since the conjugations have 7 different verbs.
-        //         {
-        //             germanVerbFile >> germanInput;
-        //             string gverb = germanInput;
-        //             //cout << "reading " << gverb << endl;
-        //             gvverb.push_back(gverb);
-        //         }
-        //         VERBS v;
-        //         v.EnglishVerb = everb;
-        //         v.GermanConjugations = gvverb;
-        //         this->Verbs.push_back(v);
-        //     }
-        //     cout << "Done reading german-verbs.txt & english-verbs.txt" << endl;
-        // }
-        // else
-        // {
-        //     cout << "THE VERBS ARE MISSING!" << endl;
-        // }

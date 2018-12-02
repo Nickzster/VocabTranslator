@@ -92,48 +92,7 @@ void AddConj(VocabTranslator &v)
     cout << "===> To return to the menu, type in Q at any time." << endl;
     while(conj)
     {
-        string EnglishVerb;
-        string GermanInput;
-        vector <string> GermanConjugations;
-        cout << "Enter an english verb: ";
-        cin >> EnglishVerb;
-        if(EnglishVerb.at(0) == 'q' && EnglishVerb.size() == 1) return;
-        cout << "Enter the German Verb Equivalent: ";
-        cin >> GermanInput;
-        if(GermanInput.at(0) == 'q' && GermanInput.size() == 1) return;
-        GermanConjugations.push_back(GermanInput);
-        GermanInput = "";
-        cout << "Enter the Conjugation for Ich: ";
-        cin >> GermanInput;
-        if(GermanInput.at(0) == 'q' && GermanInput.size() == 1) return;
-        GermanConjugations.push_back(GermanInput);
-        GermanInput = "";
-        cout << "Enter the Conjugation for Du: ";
-        cin >> GermanInput;
-        if(GermanInput.at(0) == 'q' && GermanInput.size() == 1) return;
-        GermanConjugations.push_back(GermanInput);
-        GermanInput = "";
-        cout << "Enter the Conjugation for er,sie,es: ";
-        cin >> GermanInput;
-        if(GermanInput.at(0) == 'q' && GermanInput.size() == 1) return;
-        GermanConjugations.push_back(GermanInput);
-        GermanInput = "";
-        cout << "Enter the Conjugation for Wir: ";
-        cin >> GermanInput;
-        if(GermanInput.at(0) == 'q' && GermanInput.size() == 1) return;
-        GermanConjugations.push_back(GermanInput);
-        GermanInput = "";
-        cout << "Enter the Conjugation for Ihr: ";
-        cin >> GermanInput;
-        if(GermanInput.at(0) == 'q' && GermanInput.size() == 1) return;
-        GermanConjugations.push_back(GermanInput);
-        GermanInput = "";
-        cout << "Enter the Conjugation for Sie: ";
-        cin >> GermanInput;
-        if(GermanInput.at(0) == 'q' && GermanInput.size() == 1) return;
-        GermanConjugations.push_back(GermanInput);
-        GermanInput = "";
-        v.addConjugation(EnglishVerb, GermanConjugations);
+        
     }
 }
 

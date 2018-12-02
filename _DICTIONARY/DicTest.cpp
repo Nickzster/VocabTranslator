@@ -80,7 +80,59 @@ void helpFunction()
 }
 void addWordsFunction()
 {
-    cout << "called add words" << endl;
+    while(true)
+    {
+        string input;
+        WORDS gword;
+        WORDS eword;
+        cout << "Now adding a word...." << endl;
+            // $EWORD
+        cout << "Enter the word in english: ";
+        cin >> input;
+        eword.word = input;
+        gword.indexToTranslation = input;
+            // $INDEXTRANSLATION
+        cout << "Enter the german equivalent: ";
+        cin >> input;
+        eword.indexToTranslation = input;
+        gword.word = input;
+            // $TYPE
+        cout << "Enter the type of word ";
+        cin >> input;
+        gword.type = input;
+        eword.type = input;
+        if(input == "VERB")
+        {
+            cout << "***You have entered a verb. Starting with PRESENT CASE:" << endl;
+            eword.conjugation.push_back("@PRESENT");
+            cout << "Enter the english conjugation for I: ";
+            cin >> input;
+            eword.conjugation.push_back(input);
+            cout << "Enter the english conjugation for You: ";
+            cin >> input;
+            cout << "Enter the english conjugation for he/she/it: ";
+            cin >> input;
+            for(i = 0; i < 3; i++)
+                eword.conjugation.push_back(eword.conjugation.at(2)); //since conjugation for plural cases are the same for "You".
+            cout << "***Now, enter the german equivalent, Starting with PRESENT CASE:" << endl;
+            cout << "Enter the german conjugation for ich: ";
+            cin >> input;
+        else
+        {
+
+        }
+            // $CASE
+            // $EC 
+            //prompt for present and past if type == verb
+            // $EOEC
+            // $ENDOFEWORD
+            // $GWORD
+            // $INDEXTRANSLATION
+            // $GC
+            // $EOGC
+            // $ENDOFGWORD
+            // $EOWORD 
+    }
 }
 void translateFunction(string wordToTranslate)
 {

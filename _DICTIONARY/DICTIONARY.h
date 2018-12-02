@@ -38,9 +38,6 @@ class Dictionary
         ~Dictionary();
 
         string lookUp(string);
-        void addToDictionary(WORDS, WORDS);
-        bool removeFromDictionary(string);
-        bool fixAWord(WORDS, WORDS);
 };
 
 #endif
