@@ -33,129 +33,15 @@ void Dictionary::read()
     WORDS germanWord; //words to read into
     WORDS englishWord;
     WORDS empty;
-    if(!dictionaryFile.is_open())
+    dictionaryFile >> input;
+    while(true)
     {
-        cout << "Dictionary file does not exist." << endl;
-    }
-    else
-    {   bool readingEnglishWord = true;
-        while(dictionaryFile >> input)
+        if(input == "$word")
         {
-            cout << "Starting with a word..." << endl;
-            //First file marker: $EWORD
-            if(input == "$EWORD")
-            {
-                cout << "Matched the name of an english word..." << endl;
-                dictionaryFile >> input;
-                englishWord.word = input;
-            }
-            else if(input == "$INDEXTRANSLATION")
-            {
-                cout << "Matched the " << "READINGANENGLISHWORD(" << readingEnglishWord << ") word's translation..." << endl;
-                dictionaryFile >> input;
-                //use readingEnglishWord to distinguish GermanIndex and EnglishIndex
-                if (readingEnglishWord)
-                    englishWord.indexToTranslation = input;
-                else
-                    germanWord.indexToTranslation = input;
-            }
-            else if(input == "$TYPE")
-            {
-                cout << "Matched the english word's type..." << endl;
-                dictionaryFile >> input;
-                germanWord.type = input;
-                englishWord.type = input;
-            }
-            else if(input == "$CASE")
+            while(true)
             {
                 dictionaryFile >> input;
-                if(input == "NOMINATIVE")
-                {
-                    germanWord.wordCase = NOMINATIVE;
-                    englishWord.wordCase = NOMINATIVE;
-                }
-                else if(input == "ACCUSATIVE")
-                {
-                    germanWord.wordCase = NOMINATIVE;
-                    englishWord.wordCase = NOMINATIVE;
-                }
-                else if(input == "DATIVE")
-                {
-                    germanWord.wordCase = DATIVE;
-                    englishWord.wordCase = DATIVE;
-                }
-                else
-                {
-                    cout << "##WARNING: CASE NOT FOUND. DEFAULTING TO NOMINATIVE##" << endl;
-                    germanWord.wordCase = NOMINATIVE;
-                    englishWord.wordCase = NOMINATIVE;
-                }
-            }
-            else if(input == "$EC")
-            {
-                cout << "Matched conjugation flag... reading english conjugation now..." << endl;
-                while(true)
-                {
-                    dictionaryFile >> input;
-                    if(input != "$EOEC")
-                        englishWord.conjugation.push_back(input);
-                    else
-                        break;
-                }
-                cout << "...Done w/ english conjugation" << endl;
-                //use $EOEC to stop loop
-            }
-            else if(input == "$ENDOFEWORD")
-            {
-                cout << "End of english word." << endl;
-                //END OF ENGLISH WORD  
-                readingEnglishWord = false; 
-            }
-            else if(input == "$GWORD")
-            {
-                dictionaryFile >> input;
-                cout << "Matched the name of an german word..." << endl;
-                germanWord.word = input;
-            }
-            else if(input == "$GC")
-            {
-                cout << "Matched conjugation flag... reading german conjugation now..." << endl;
-                while(true)
-                {
-                    dictionaryFile >> input;
-                    if(input != "$EOGC")
-                        germanWord.conjugation.push_back(input);
-                    else
-                        break;
-                }
-                cout << "...Done w/ german conjugation" << endl;
-                //use $EOGC to stop loop
-            }
-            else if(input == "$ENDOFGWORD")
-            {
-                cout << "Matched the end of a german word." << endl;
-                readingEnglishWord = true;
-            }
-            else if(input == "$EOWORD")
-            {
-                cout << "Matched the end of a word. Adding it to the map now..." << endl;
-                germanWord.active = true;
-                englishWord.active = true;
-                germanWords.insert(pair<string, WORDS>(germanWord.word, germanWord));
-                englishWords.insert(pair<string, WORDS>(englishWord.word, englishWord));
-                englishWord = empty;
-                germanWord = empty;
-                cout << "Done writing to map." << endl;
-            }
-            else if(input == "$EOD")
-            {
-                cout << "DONE READING dictionary.txt" << endl;
-                dictionaryFile >> input;
-            }
-            else
-            {
-                cout << "*****************************INPUT IS: " << input << endl;
-                cout << "ERROR: I DONT KNOW WHAT HAPPENED! (called from constructor)" << endl;
+                
             }
         }
     }

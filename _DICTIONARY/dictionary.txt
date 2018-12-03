@@ -1,4 +1,16 @@
+
+
 $word
+    $eword
+        love
+    $eword
+    $gword
+        liebe
+    $gword
+$word
+$eod
+
+$verb
     $eword
         to-be
     $eword
@@ -43,12 +55,7 @@ $word
         wart 
         waren
     $germanconjugation
-$word
-
-$word
-
-$word
-$eod
+$verb
 
 
 

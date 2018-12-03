@@ -27,7 +27,7 @@ class Dictionary
     private:
         map <string, WORDS> englishWords;
         map <string, WORDS> germanWords;
-        string[3] wordCaseStrings;
+        string wordCaseStrings[3];
         bool quickSearch();
         bool nSearch();
         void read();
